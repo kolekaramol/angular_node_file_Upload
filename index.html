@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title>Home</title>
+	</head>
+	<body ng-app="fileUpload" ng-controller="submitController">
+		<h1>Angular Node File Upload</h1>
+        <form>
+
+          <div class="form-group"> 
+              <label for="mySelect">Make a choice:</label>
+              <select name="mySelect" id="mySelect"
+                ng-options="option.fileName for option in fileformdata"
+                ng-model="customer.choice"></select>
+          </div>
+          <div class="form-group">
+              <div ng-repeat="file in fileformdata">
+                  <input 
+                  type="file" 
+                  ngf-select 
+                  ng-model="{{'customer.'+file.fileName}}" 
+
+                  name="" 
+                  ngf-pattern="'image/*'"
+                  accept="image/*" 
+                  ngf-max-size="20MB" 
+                  />
+          </div>
+            <!-- <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter name" ng-model="customer.name">
+            </div> -->
+            <!-- <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="customer.email">
+            </div> -->
+            <!-- <div class="form-group" ng-repeat="x in ">
+              <label for="exampleInputFile">Avatar</label>
+              <input type="file" id="exampleInputFile" file-model="customer.file">
+            </div> -->
+            <button type="submit" class="btn btn-default" ng-click="Submit()">Submit</button>
+          </form>
+          
+          {{customer}}
+	</body>
+	<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+	<script type="text/javascript" src="node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    
+    <script type="text/javascript" src="controller.js"></script>
+    <script type="text/javascript" src="fileModel.js"></script>
+        <script type="text/javascript" src="multipartForm.js"></script>
+</html>
